@@ -2,9 +2,9 @@
   "name": "fc-studies-ddd",
   "version": "1.0.0",
   "description": "A project to learn how to apply DDD concepts in a real case project.",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "start": "nodemon --watch 'src/' --exec 'ts-node src/index.ts' -e ts"
+    "start": "nodemon --watch 'src/' --exec 'ts-node src/main.ts' -e ts"
   },
   "keywords": [
     "DDD",
