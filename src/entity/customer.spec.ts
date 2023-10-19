@@ -5,6 +5,7 @@
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
  */
 
+import Address from "./address";
 import Customer from "./customer";
 
 describe("Customer unit tests", () => {
@@ -19,5 +20,44 @@ describe("Customer unit tests", () => {
     expect(() => {
       new Customer("1234", "");
     }).toThrowError("Name is required");
+  });
+
+  it("should change Customer name", () => {
+    // Arrange
+    const customer = new Customer("1234", "Glaucia Lemos");
+
+    // Act
+    customer.changeName("Jurema Lemos");
+
+    // Assert
+    expect(customer.name).toBe("Jurema Lemos");
+  });
+
+  // Para ativar o cliente se faz necessário saber o endereço do 'Customer'
+  it("should activate Customer", () => {
+
+    const customer = new Customer("1", "Customer 1");
+    const address = new Address("Rua 7 de Setembro", 700, "Rio de Janeiro", "20000-000");
+    customer.Address = address;
+
+    customer.activate();
+
+    expect(customer.isActive()).toBeTruthy();
+  });
+
+  it("should deactivate Customer", () => {
+
+    const customer = new Customer("1", "Customer 1");
+
+    customer.deactivate();
+
+    expect(customer.isActive()).toBe(false);
+  });
+
+  it("should return an error if Customer 'address' is undefined when you activate a Customer", () => {
+    expect(() => {
+      const customer = new Customer("1", "Customer 1");
+      customer.activate();
+    }).toThrowError("Address is mandatory to activate a customer");
   });
 });
