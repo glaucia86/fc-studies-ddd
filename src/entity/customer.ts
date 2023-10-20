@@ -59,5 +59,5 @@ export default class Customer {
   }
 }
 
-const customer = new Customer("1234", "Glaucia");
-console.log(customer);
+//const customer = new Customer("1234", "Glaucia");
+//console.log(customer);
