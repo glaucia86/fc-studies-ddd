@@ -6,19 +6,14 @@
  */
 
 export default class OrderItem {
-  private _id: string;
-  private _productId: string; // Relacionamento entre as tabelas: OrderItem & Product
-  private _name: string;
-  private _price: number;
-  private _quantity: number;
 
-  constructor(_id: string, _name: string, _price: number, _quantity: number, _productId: string) {
-    this._id = _id;
-    this._name = _name;
-    this._price = _price;
-    this._quantity = _quantity;
-    this._productId = _productId;
-  }
+  constructor(
+    private _id: string,
+    private _name: string,
+    private _price: number,
+    private _quantity: number,
+    private _productId: string
+  ) { }
 
   get quantity(): number {
     return this._quantity;
@@ -31,5 +26,4 @@ export default class OrderItem {
   orderItemTotal(): number {
     return this._price * this._quantity;
   }
-
 }
