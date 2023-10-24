@@ -8,13 +8,14 @@
 import Address from "./address";
 
 export default class Customer {
-  constructor(
-    private _id: string,
-    private _name: string,
-    private _address: Address,
-    private _active: boolean
+  private _id: string;
+  private _name: string = "";
+  private _address!: Address;
+  private _active: boolean = false;
 
-  ) {
+  constructor(id: string, name: string) {
+    this._id = id;
+    this._name = name;
     this.validate();
   }
 

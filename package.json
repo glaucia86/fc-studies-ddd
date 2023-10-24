@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "nodemon --watch 'src/' --exec 'ts-node src/main.ts' -e ts",
-    "test": "jest"
+    "test": "npm run tsc -- --noEmit && jest",
+    "tsc": "tsc"
   },
   "keywords": [
     "DDD",
