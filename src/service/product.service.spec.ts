@@ -1,11 +1,12 @@
 /**
- * file: src/service/order.service.spec.ts
- * description: file responsible for test the 'Order Service' class
+ * file: src/service/product.service.spec.ts
+ * description: file responsible for test the 'ProductService' class
  * data: 10/25/2023
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
  */
 
 import Product from "../entity/product";
+import ProductService from "./product.service";
 
 describe("Product service unit tests", () => {
 
@@ -19,4 +20,4 @@ describe("Product service unit tests", () => {
     expect(product_01.price).toBe(20);
     expect(product_02.price).toBe(40);
   });
-})
+});
