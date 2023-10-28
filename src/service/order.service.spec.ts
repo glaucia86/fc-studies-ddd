@@ -19,7 +19,7 @@ describe("Order service unit tests", () => {
     const order_01 = new Order("id_1", "customer-01", [item_01]);
     const order_02 = new Order("id_2", "customer-02", [item_02]);
 
-    const total = OrderService.total([order_01, order_02]);
+    const total = OrderService.totalOrders([order_01, order_02]);
 
     expect(total).toBe(500);
 
