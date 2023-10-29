@@ -5,10 +5,10 @@
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
  */
 
-import Address from "./entity/address";
-import Customer from "./entity/customer";
-import Order from "./entity/order";
-import OrderItem from "./entity/order_item";
+import Address from "./domain/entity/address";
+import Customer from "./domain/entity/customer";
+import Order from "./domain/entity/order";
+import OrderItem from "./domain/entity/order_item";
 
 const customer = new Customer("1234", "Glaucia");
 const address = new Address("Rua 7 de Setembro", 137, "Rio de Janeiro", "10795-295");

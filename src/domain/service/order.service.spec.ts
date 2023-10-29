@@ -5,9 +5,9 @@
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
  */
 
-import Customer from "../entity/customer";
-import Order from "../entity/order";
-import OrderItem from "../entity/order_item";
+import Customer from "../domain/entity/customer";
+import Order from "../domain/entity/order";
+import OrderItem from "../domain/entity/order_item";
 import OrderService from "./order.service";
 
 describe("Order service unit tests", () => {
