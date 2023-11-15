@@ -2,7 +2,7 @@
   "jsc": {
     "parser": {
       "syntax": "typescript",
-      "decorator": true
+      "decorators": true
     },
     "transform": {
       "legacyDecorator": true,
