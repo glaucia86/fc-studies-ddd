@@ -81,23 +81,16 @@ describe("Customer Repository Tests", () => {
 
   });
 
-  it("Should find a customer", async () => {
+  it("should find a customer", async () => {
     const customerRepository = new CustomerRepository();
-    const customer = new Customer("1", "Customer 01");
-    const address = new Address("Av das Americas", 35000, "City 01", "000000");
+    const customer = new Customer("123", "Customer 1");
+    const address = new Address("Street 1", 1, "Zipcode 1", "City 1");
     customer.Address = address;
     await customerRepository.create(customer);
 
     const customerResult = await customerRepository.find(customer.id);
 
-    const expectedCustomer = new Customer(
-      "1",
-      "Customer 01"
-    );
-    const expectedAddress = new Address("Av das Americas", 35000, "000000", "City 01");
-    expectedCustomer.Address = expectedAddress;
-
-    expect(customerResult).toEqual(expectedCustomer);
+    expect(customer).toStrictEqual(customerResult);
   });
 
   it("should throw an error when customer is not found", async () => {
