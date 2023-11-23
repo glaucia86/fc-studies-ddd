@@ -65,10 +65,10 @@ describe("Customer unit tests", () => {
     const customer = new Customer("customer-id-01", "customer-name-01");
     expect(customer.rewardPoints).toBe(0);
 
-    customer.addRewardsPoints(10);
+    customer.addRewardPoints(10);
     expect(customer.rewardPoints).toBe(10);
 
-    customer.addRewardsPoints(10);
+    customer.addRewardPoints(10);
     expect(customer.rewardPoints).toBe(20);
   });
 });

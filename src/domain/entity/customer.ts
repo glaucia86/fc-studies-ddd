@@ -20,6 +20,10 @@ export default class Customer {
     this.validate();
   }
 
+  get id(): string {
+    return this._id;
+  }
+
   get name(): string {
     return this._name;
   }
@@ -28,23 +32,26 @@ export default class Customer {
     return this._rewardPoints;
   }
 
-  get id(): string {
-    return this._id;
-  }
-
   validate() {
     if (this._id.length === 0) {
-      throw new Error("Customer Id is required");
+      throw new Error("Id is required");
     }
     if (this._name.length === 0) {
-      throw new Error("Customer Name is required");
+      throw new Error("Name is required");
     }
   }
 
-  // aqui agora eu tenho um modelo rico. Que representa alguma regra de negócio
   changeName(name: string) {
     this._name = name;
     this.validate();
+  }
+
+  get Address(): Address {
+    return this._address;
+  }
+  
+  changeAddress(address: Address) {
+    this._address = address;
   }
 
   isActive(): boolean {
@@ -55,7 +62,6 @@ export default class Customer {
     if (this._address === undefined) {
       throw new Error("Address is mandatory to activate a customer");
     }
-
     this._active = true;
   }
 
@@ -63,7 +69,7 @@ export default class Customer {
     this._active = false;
   }
 
-  addRewardsPoints(points: number) {
+  addRewardPoints(points: number) {
     this._rewardPoints += points;
   }
 
