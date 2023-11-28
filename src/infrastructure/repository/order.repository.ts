@@ -10,6 +10,7 @@ import OrderItem from "../../domain/entity/order_item";
 import OrderRepositoryInterface from "../../domain/repository/order-repository.interface";
 import OrderItemModel from "../db/sequelize/model/order-item.model";
 import OrderModel from "../db/sequelize/model/order.model";
+import { Sequelize } from "sequelize";
 
 export default class OrderRepository implements OrderRepositoryInterface {
 
@@ -31,40 +32,28 @@ export default class OrderRepository implements OrderRepositoryInterface {
   }
 
   async update(entity: Order): Promise<void> {
-    OrderItemModel.findAll({ where: { order_id: entity.id } }).then((orderItems) => {
-      entity.items.forEach((item) => {
-        if (!orderItems.find(orderItem => orderItem.id === item.id)) {
-          OrderItemModel.create({
-            id: item.id,
-            name: item.name,
-            price: item.price,
-            product_id: item.productId,
-            quantity: item.quantity,
-            order_id: entity.id
-          })
-        }
+    const sequelize = OrderModel.sequelize as Sequelize;
+    await sequelize.transaction(async (t) => {
+      await OrderItemModel.destroy({
+        where: { order_id: entity.id },
+        transaction: t,
       });
-    });
 
-    await OrderModel.update(
-      {
-        id: entity.id,
-        customer_id: entity.customerId,
-        total: entity.total(),
-        items: entity.items.map((item) => ({
-          id: item.id,
-          name: item.name,
-          price: item.price,
-          quantity: item.quantity,
-          product_id: item.productId
-        })),
-      },
-      {
-        where: {
-          id: entity.id
-        }
-      },
-    );
+      const items = entity.items.map((item) => ({
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        product_id: item.productId,
+        quantity: item.quantity,
+        order_id: entity.id,
+      }));
+
+      await OrderItemModel.bulkCreate(items, { transaction: t });
+      await OrderModel.update(
+        { total: entity.total() },
+        { where: { id: entity.id}, transaction: t }
+      );
+    });
   }
 
   async find(id: string): Promise<Order> {

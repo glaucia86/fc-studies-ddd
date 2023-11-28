@@ -101,21 +101,8 @@ describe("Order Repository Tests", () => {
     await productRepository.create(product);
     await productRepository.create(product2);
 
-    const orderItem = new OrderItem(
-      "1",
-      product.name,
-      product.price,
-      2,
-      product.id
-    );
-
-    const orderItem2 = new OrderItem(
-      "1",
-      product.name,
-      product.price,
-      3,
-      product.id
-    );
+    const orderItem = new OrderItem("1", product.name, product.price, 2, product.id);
+    const orderItem2 = new OrderItem("2", product2.name, product2.price, 3, product2.id);
 
     const order = new Order("123", "123", [orderItem]);
     const orderRepository = new OrderRepository();
@@ -163,10 +150,17 @@ describe("Order Repository Tests", () => {
           quantity: orderItem.quantity,
           order_id: order.id,
           product_id: orderItem.productId
+        },
+        {
+          id: orderItem2.id,
+          name: orderItem2.name,
+          price: orderItem2.price,
+          quantity: orderItem2.quantity,
+          order_id: order.id,
+          product_id: orderItem2.productId
         }
-      ],
+      ]
     });
-
   });
 
   it("should find an order", async () => {
@@ -253,11 +247,21 @@ describe("Order Repository Tests", () => {
     await orderRepository.create(order);
     await orderRepository.create(order2);
 
-    const foundOrders = await OrderModel.findAll({
-      include: ["items"]
-    })
+    const findOrders = await orderRepository.findAll();
 
-    expect(foundOrders.map((order) => order.toJSON())).toStrictEqual([
+    expect(findOrders.map((order) => ({
+      id: order.id,
+      customer_id: order.customerId,
+      total: order.total(),
+      items: order.items.map((item) => ({
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+        order_id: order.id,
+        product_id: item.productId
+      })),
+    }))).toStrictEqual([
       {
         id: order.id,
         customer_id: order.customerId,
@@ -269,9 +273,9 @@ describe("Order Repository Tests", () => {
             price: orderItem.price,
             quantity: orderItem.quantity,
             order_id: order.id,
-            product_id: product.id
-          }
-        ]
+            product_id: product.id,
+          },
+        ],
       },
       {
         id: order2.id,
@@ -284,10 +288,10 @@ describe("Order Repository Tests", () => {
             price: orderItem2.price,
             quantity: orderItem2.quantity,
             order_id: order2.id,
-            product_id: product2.id
-          }
-        ]
-      }
+            product_id: product2.id,
+          },
+        ],
+      },
     ]);
   });
 
