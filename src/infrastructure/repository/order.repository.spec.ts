@@ -17,6 +17,7 @@ import ProductRepository from "./product.repository";
 import Product from "../../domain/entity/product";
 import OrderItem from "../../domain/entity/order_item";
 import Order from "../../domain/entity/order";
+import OrderRepository from "./order.repository";
 
 describe("Order Repository Tests", () => {
 
@@ -41,13 +42,13 @@ describe("Order Repository Tests", () => {
 
   it("should create a new order", async () => {
     const customerRepository = new CustomerRepository();
-    const customer = new Customer("Customer-01", "John Doe");
+    const customer = new Customer("123", "Customer 1");
     const address = new Address("Av das Americas", 2000, "Rio de Janeiro", "22795-000");
     customer.changeAddress(address);
     await customerRepository.create(customer);
 
     const productRepository = new ProductRepository();
-    const product = new Product("Product-01", "Product 01", 10);
+    const product = new Product("123", "Product 1", 10);
     await productRepository.create(product);
 
     const orderItem = new OrderItem(
@@ -80,7 +81,8 @@ describe("Order Repository Tests", () => {
           name: orderItem.name,
           price: orderItem.price,
           quantity: orderItem.quantity,
-          order_id: "123"
+          order_id: "123",
+          product_id: "123"
         }
       ],
     });

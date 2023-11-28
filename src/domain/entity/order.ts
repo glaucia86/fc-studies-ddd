@@ -26,6 +26,14 @@ export default class Order {
     return this._id
   }
 
+  get customerId(): string {
+    return this._customerId;
+  }
+
+  get items(): OrderItem[] {
+    return this._items;
+  }
+
   validate(): boolean {
     if (this._id === "") {
       throw new Error("Invalid param: id");
