@@ -12,12 +12,12 @@ export default class OrderItem {
   private _price: number;
   private _quantity: number;
 
-  constructor(_id: string, _name: string, _price: number, _quantity: number, _productId: string) {
-    this._id = _id;
-    this._name = _name;
-    this._price = _price;
-    this._quantity = _quantity;
-    this._productId = _productId;
+  constructor(id: string, name: string, price: number, quantity: number, productId: string) {
+    this._id = id;
+    this._name = name;
+    this._price = price;
+    this._quantity = quantity;
+    this._productId = productId;
   }
 
   get id(): string {
