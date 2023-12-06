@@ -5,6 +5,9 @@
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
  */
 
+import SendEmailWhenProductIsCreatedHandler from "../product/handler/send-email-created.handler";
+import EventDispatcher from "./event-dispatcher";
+
 describe('Domain events tests', () => {
 
   it("should register an event handler", () => {
