@@ -49,7 +49,7 @@ describe('Domain events tests', () => {
 
     eventDispatcher.unregisterAll();
 
-    expect(eventDispatcher.getEventHandlers["ProductCreatedEvent"]).toBe(undefined);
+    expect(eventDispatcher.getEventHandlers["ProductCreatedEvent"]).toBeUndefined();
   });
 
   it("should notify all events handlers", () => {
