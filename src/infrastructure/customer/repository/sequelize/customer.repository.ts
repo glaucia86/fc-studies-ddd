@@ -1,14 +1,14 @@
 /**
- * file: src/infrastructure/repository/customer.repository.ts
+ * file: src/infrastructure/customer/repository/sequelize/customer.repository.ts
  * description: file responsible for the Customer Repository
  * data: 11/22/2023
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
  */
 
-import Customer from "../../domain/customer/entity/customer";
-import CustomerRepositoryInterface from "../../domain/customer/repository/customer-repository.interface";
-import CustomerModel from "../db/sequelize/model/customer.model";
-import Address from "../../domain/customer/value-object/address";
+import Customer from "../../../../domain/customer/entity/customer";
+import CustomerRepositoryInterface from "../../../../domain/customer/repository/customer-repository.interface";
+import CustomerModel from "./customer.model";
+import Address from "../../../../domain/customer/value-object/address";
 
 export default class CustomerRepository implements CustomerRepositoryInterface {
 

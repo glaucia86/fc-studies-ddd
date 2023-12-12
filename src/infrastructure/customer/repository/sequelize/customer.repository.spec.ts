@@ -1,14 +1,14 @@
 /**
- * file: src/infrastructure/repository/customer.repository.spec.ts
+ * file: src/infrastructure/customer/repository/sequelize/customer.repository.spec.ts
  * description: file responsible for the Customer Repository Test
  * data: 11/22/2023
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
  */
 
 import { Sequelize } from "sequelize-typescript";
-import CustomerModel from "../db/sequelize/model/customer.model";
-import Customer from "../../domain/customer/entity/customer";
-import Address from "../../domain/customer/value-object/address";
+import CustomerModel from "./customer.model";
+import Customer from "../../../../domain/customer/entity/customer";
+import Address from "../../../../domain/customer/value-object/address";
 import CustomerRepository from "./customer.repository";
 
 describe("Customer Repository Tests", () => {

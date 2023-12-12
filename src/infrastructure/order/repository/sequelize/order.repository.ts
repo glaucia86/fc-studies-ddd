@@ -1,15 +1,15 @@
 /**
- * file: src/infrastructure/repository/customer.repository.ts
+ * file: src/infrastructure/order/repository/sequelize/order.repository.ts
  * description: file responsible for the Customer Repository
  * data: 11/22/2023
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
  */
 
-import Order from "../../domain/checkout/entity/order";
-import OrderItem from "../../domain/checkout/entity/order_item";
-import OrderRepositoryInterface from "../../domain/checkout/repository/order-repository.interface";
-import OrderItemModel from "../db/sequelize/model/order-item.model";
-import OrderModel from "../db/sequelize/model/order.model";
+import Order from "../../../../domain/checkout/entity/order";
+import OrderItem from "../../../../domain/checkout/entity/order_item";
+import OrderRepositoryInterface from "../../../../domain/checkout/repository/order-repository.interface";
+import OrderItemModel from "./order-item.model";
+import OrderModel from "./order.model";
 import { Sequelize } from "sequelize";
 
 export default class OrderRepository implements OrderRepositoryInterface {

@@ -1,13 +1,13 @@
 /**
- * file: src/infrastructure/repository/product.repository.spec.ts
+ * file: src/infrastructure/product/repository/sequelize/product.repository.spec.ts
  * description: file responsible for the Product Repository Test
  * data: 11/15/2023
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
  */
 
 import { Sequelize } from "sequelize-typescript";
-import ProductModel from "../db/sequelize/model/product.model";
-import Product from "../../domain/product/entity/product";
+import ProductModel from "./product.model";
+import Product from "../../../../domain/product/entity/product";
 import ProductRepository from "./product.repository";
 
 describe("Product Repository Tests", () => {

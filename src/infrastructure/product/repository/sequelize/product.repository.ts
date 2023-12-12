@@ -1,14 +1,14 @@
 /**
- * file: src/infrastructure/repository/product.repository.ts
+ * file: src/infrastructure/product/repository/sequelize/product.repository.ts
  * description: file responsible for the Product Repository
  * data: 11/15/2023
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
  */
 
 
-import Product from "../../domain/product/entity/product";
-import ProductRepositoryInterface from "../../domain/product/repository/product-repository.interface";
-import ProductModel from "../db/sequelize/model/product.model";
+import Product from "../../../../domain/product/entity/product";
+import ProductRepositoryInterface from "../../../../domain/product/repository/product-repository.interface";
+import ProductModel from "./product.model";
 
 export default class ProductRepository implements ProductRepositoryInterface {
 
